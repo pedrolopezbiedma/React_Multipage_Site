@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Article from "./pages/Article";
 
 import "./App.css";
 
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/article/:id">
+            <Article />
           </Route>
         </Switch>
       </BrowserRouter>
