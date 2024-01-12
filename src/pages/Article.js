@@ -1,13 +1,24 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 
 const Article = () => {
   const { id } = useParams();
+  const history = useHistory();
   const {
     data: article,
     isPending,
     error,
   } = useFetch(`http://localhost:3005/articles/${id}`);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (error) {
+        history.push("/");
+      }
+    }, 2000);
+  }, [history, error]);
+
   return (
     <div>
       {isPending && <p>Loading the data...</p>}
